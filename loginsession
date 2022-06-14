@@ -1,0 +1,53 @@
+<?php
+session_start();
+
+include("../../../koneksi.php");
+
+$stmt = $koneksi->prepare("SELECT id,kode,id_madrasah,nama_kelas,semester,tahun_ajaran,jumlah_siswa,id_wali FROM tbl_kelas WHERE  id_madrasah ='Aliyah' AND id_wali= " . $_SESSION['nip']);
+
+$stmt->bind_result($id,$kode,$id_madrasah,$nama_kelas,$semester,$tahun_ajaran,$jumlah_siswa,$id_wali);
+
+if ($stmt->execute())
+{
+    while($stmt->fetch())
+    {
+        $output[] = array("id"=>$id,"kode"=>$kode,"id_madrasah"=>$id_madrasah,"nama_kelas"=>$nama_kelas,"semester"=>$semester,"tahun_ajaran"=>$tahun_ajaran,"jumlah_siswa"=>$jumlah_siswa,"id_wali"=>$id_wali);
+    }
+    echo json_encode($output);
+}
+$stmt->close();
+?>
+
+
+tambah
+
+<?php
+session_start();
+
+include("../../../koneksi.php");
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+
+    $nama = $_POST['nama'];
+    $username = strtolower(stripcslashes($_POST["username"]));
+    $password = mysqli_escape_string ($koneksi, $_POST['password']);
+    $cek_id = $_SESSION['id'];
+
+    
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    $stmt = $koneksi->prepare("INSERT INTO tbl_operator (nama,username,password,cek_id) VALUES (?,?,?,?)");
+
+    $stmt->bind_param("sssi",$nama,$username,$password,$cek_id);
+    if ($stmt->execute())
+    {
+        echo 1;
+    }else{
+        echo 0;
+    }
+
+    $stmt->close();
+
+}
+?>

@@ -1,0 +1,70 @@
+body{
+  font-family: sans-serif;
+}
+.registrasiForm{
+  background: #34103d;
+}
+.login{
+  background: #34103d;
+}
+.LoginForm{
+  background: #34103d;
+}
+.navbar.navbar-expand-lg .navbar-brand{
+
+  font-size: 19px;
+  font-weight: bold;
+}
+.navbar.navbar-expand-lg .nav-link{
+
+   font-size: 18px;
+   font-weight: bold;
+}
+.container-fluid.content{
+color: white;
+}
+
+footer{
+	background: #000000;
+	padding: 5% 13% 5% 13%;
+	color: #FFFFFF;
+	}
+footer p{
+	padding-top: 4%;
+	}
+footer .row .col-lg-6{
+	padding: 2%;
+}
+footer a{
+  color: #FFFFFF;
+  text-decoration: none;
+}
+footer a:hover{
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+@media (min-width: 300px) { 
+.LoginForm .container.container-login{
+  width: 95%;
+  margin-top: 10%;
+ }
+}
+  
+@media (min-width: 768px) { 
+.LoginForm .container.container-login{
+  width: 60%;
+  margin-top: 10%;
+ }
+}
+
+@media (min-width: 992px) { 
+.LoginForm .container.container-loginn{
+  width: 30%;
+  margin-top: 10%;
+ }
+}
+
+.error{
+  font-size: 1rem;
+}
