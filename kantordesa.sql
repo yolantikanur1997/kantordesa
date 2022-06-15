@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jun 2022 pada 16.12
+-- Waktu pembuatan: 15 Jun 2022 pada 11.37
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -40,6 +40,26 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id_admin`, `nama`, `username`, `password`) VALUES
 (0, 'Yolantika Nur', 'yoyo', '$2y$10$uKsrfxFI1LwvBmVD1zimSeXZuISSU61IcVRT0EbHSoRaKsMKF2gp6');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jenis_surat`
+--
+
+CREATE TABLE `jenis_surat` (
+  `id_jenis_surat` int(11) NOT NULL,
+  `nama_surat` varchar(100) NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `jenis_surat`
+--
+
+INSERT INTO `jenis_surat` (`id_jenis_surat`, `nama_surat`, `keterangan`) VALUES
+(3, 'Surat Pengantar Catatan Kepolisian', 'lorem ipsum ipsum'),
+(4, 'Surat Pernyataan Tanah', 'lorem ipsum');
 
 -- --------------------------------------------------------
 
@@ -85,6 +105,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
+-- Indeks untuk tabel `jenis_surat`
+--
+ALTER TABLE `jenis_surat`
+  ADD PRIMARY KEY (`id_jenis_surat`);
+
+--
 -- Indeks untuk tabel `pengguna`
 --
 ALTER TABLE `pengguna`
@@ -95,10 +121,16 @@ ALTER TABLE `pengguna`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `jenis_surat`
+--
+ALTER TABLE `jenis_surat`
+  MODIFY `id_jenis_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT untuk tabel `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

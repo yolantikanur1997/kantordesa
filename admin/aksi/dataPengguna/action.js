@@ -105,7 +105,7 @@ function lihat()
                         "sTitle":"Opsi",
                         "mData": "id_pengguna",
                         "render": function(mData, type, row, meta){
-                            return'<button class="btn btn-xs btn-info" title="Pilih" onclick="lihatData('+ mData +')"><i class="fa fa-eye"></i></button> <button class="btn btn-xs btn-warning" title="Pilih" onclick="ambil('+ mData +')"><i class="fa fa-edit"></i></button>  <button class="btn btn-xs btn-danger" title="Hapus" onclick="hapus('+mData+')"><i class="fa fa-trash"></i></button>';
+                            return'<button class="btn btn-xs btn-info" title="Pilih" onclick="lihatData('+ mData +')"><i class="fa fa-eye"></i></button> <button class="btn btn-xs btn-warning" title="Pilih" onclick="ambil('+ mData +')"><i class="fa fa-edit"></i></button>  <button class="btn btn-xs btn-danger" title="Hapus" onclick="hapus('+mData+')"><i class="fa fa-trash"></i></button>  <button class="btn btn-xs btn-success" title="Cetak" onclick="cetak('+mData+')"><i class="fa fa-print"></i></button>';
                         }
                   
                     }
@@ -206,7 +206,7 @@ function lihatData(id)
     $.confirm({
 
         theme: 'boostrap',
-        content: 'Yakin ingin menghapus Data admin?',
+        content: 'Yakin ingin menghapus Data Pengguna?',
         theme: 'light',
         buttons: {
 
@@ -220,7 +220,7 @@ function lihatData(id)
 
                     success:function(data){
                         lihat();
-                        $.alert('Data admin Terhapus');
+                        $.alert('Data Pengguna Terhapus');
                     },
                     error:function(xhr, status, error){
                         alert(xhr.responseText);
@@ -233,4 +233,26 @@ function lihatData(id)
 
         }
     });
+}
+
+function cetak(id)
+{
+    $.ajax({
+        type : 'POST',
+        url : 'aksi/dataPengguna/ambil.php',
+        dataType : 'JSON',
+        data : {id_pengguna:id},
+
+        success:function(data){
+            $("html, body").animate({scrollTop: 0}, "slow");
+            Isnew = false
+            id_pengguna = data.id_pengguna
+            window.location= "cetak/cetakPengguna.php?id_pengguna=" + id_pengguna;
+            
+        },
+        error:function(xhr, status, error){
+            alert(xhr.responseText);
+        }
+    });
+
 }

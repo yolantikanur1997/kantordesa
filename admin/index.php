@@ -42,6 +42,11 @@
                     <i class="fas fa-fw fa-users"></i>
                     <span>Pengguna</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=Jenis-Surat">
+                    <i class="fas fa-fw fa-envelope"></i>
+                    <span>Jenis Surat</span></a>
+            </li>
 
 
             <!-- Divider -->
@@ -120,6 +125,9 @@
                                         break; 
                                         case 'Pengguna':
                                             include "view/FormPengguna.php";
+                                            break;   
+                                        case 'Jenis-Surat':
+                                            include "view/FormJenisSurat.php";
                                             break;   
                                     
                                     }
