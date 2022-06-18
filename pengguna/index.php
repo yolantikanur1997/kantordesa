@@ -1,5 +1,10 @@
-<?php include('../layouts/header.php')?>
 
+<?php include('../layouts/header.php')?>
+<?php session_start();
+
+if( ! isset($_SESSION['nik'])){ // Jika tidak ada session username berarti dia belum login
+header("location: ../index.php"); // Kita Redirect ke halaman index.php karena belum login
+}?>
   <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -13,7 +18,7 @@
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-user"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Admin</div>
+                <div class="sidebar-brand-text mx-3">Pengguna</div>
             </a>
 
             <!-- Divider -->
@@ -28,14 +33,6 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="index.php?page=Admin">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Admin</span></a>
-            </li>
-
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php?page=Pengguna">
@@ -43,14 +40,14 @@
                     <span>Pengguna</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php?page=Jenis-Surat">
-                    <i class="fas fa-fw fa-envelope"></i>
-                    <span>Jenis Surat</span></a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="index.php?page=Berkas">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Berkas</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=Pengajuan-Surat">
+                    <i class="fas fa-fw fa-newspaper"></i>
+                    <span>Pengajuan Surat</span></a>
             </li>
 
 
@@ -89,12 +86,12 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nama Session</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['nama']?></span>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -125,14 +122,8 @@
                             if(isset($_GET['page'])){
                                     $page = $_GET['page']; 
                                     switch ($page) {
-                                        case 'Admin':
-                                        include "view/FormAdmin.php";
-                                        break; 
                                         case 'Pengguna':
                                             include "view/FormPengguna.php";
-                                            break;   
-                                        case 'Jenis-Surat':
-                                            include "view/FormJenisSurat.php";
                                             break;   
                                         case 'Berkas':
                                             include "view/FormBerkas.php";
@@ -177,15 +168,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Logout?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Pilih Logout untuk mengakhiri sesi.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="../config/_logout.php">Logout</a>
                 </div>
             </div>
         </div>

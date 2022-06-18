@@ -12,7 +12,7 @@ $password = $_POST['password'];
 
  
 // menyeleksi data admin dengan username dan password yang sesuai
-$data = mysqli_query($koneksi,"select * from konsumen where nik='$nik'");
+$data = mysqli_query($koneksi,"select * from pengguna where nik='$nik'");
 
 
 // menghitung jumlah data yang ditemukan
@@ -22,8 +22,8 @@ $cek = mysqli_num_rows($data);
 if($cek > 0){
 
 $data2 = mysqli_fetch_array($data);
-  $_SESSION['id_konsumen'] = $data2['id_konsumen'];
-  $_SESSION['nama'] = $data2['nama_konsumen'];
+  $_SESSION['id_pengguna'] = $data2['id_pengguna'];
+  $_SESSION['nama'] = $data2['nama'];
   // $_SESSION['nama'] = $data2['nama'];
 
 if(password_verify($password, $data2['password']) ){
@@ -31,7 +31,7 @@ if(password_verify($password, $data2['password']) ){
   $_SESSION['password'] = $password;
   $_SESSION['status'] = "login";
 
-  echo "<script>alert('Login Berhasil'); window.location='../konsumen/index.php'</script>"; 
+  echo "<script>alert('Selamat Datang'); window.location='../pengguna/index.php'</script>"; 
 
 }else{
    echo "<script>

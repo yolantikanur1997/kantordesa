@@ -1,52 +1,50 @@
-<?php 
-require 'pengguna/aksi/dataPengguna/tambah.php';
+<div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <div class="row">
+            <div class="col-sm-6">
+           <h6 class="m-0 font-weight-bold text-primary">Data Pengguna</h6></div>
+           <div class="col-sm-6 mr-auto" style="text-align: right;">
+           <a href="index.php?page=Pengguna"><button class="btn btn-primary" title="Segarkan"><i class="fas fa-fw fa-retweet"></i></button></a>
 
-if ( isset($_POST["regis"])) {
-  if ( registrasi($_POST) > 0) {   
-      echo "<script> 
-           alert('Pengguna Berhasil Di Simpan');
-           window.location='login.php'</script>";
-   }else{
-     echo mysqli_error($koneksi);
-   }
- }
-?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="icon" href="../style/img/logo.png" type="image/ico" /> -->
-    <title>Kantor Desa Sungau Bundung Laut</title>
-    <!-- Bootstrap -->
-    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesme -->
-    <link href="vendors/fontawesome/css/all.min.css" rel="stylesheet">
-    <!-- Custom Theme Style -->
-    <link href="style/css/custom.min.css" rel="stylesheet">
-    <link href="style/css/jquery-confirm.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="../style/css/datatables.min.css">
-     <link href="style/css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
-  </head>
+           </div>
+            </div>   
+          </div>
+            <div class="card-body">
+        <div class="col-lg-12 col-md-6 col-sm-6 mt-4">
+                <table id="tabelPengguna" class="table-bordered" cellspacing="0" width="100%" style="text-align: center;">
+            <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th> 
+                  <th></th> 
 
-<body class="bg-gradient-primary">
+                  </tr>
+                    </thead>
+                <tbody>
 
-  <div class="container">
+                </tbody>
 
-    <div class="card o-hidden border-0 shadow-lg my-5">
-      <div class="card-body p-0">
-        <!-- Nested Row within Card Body -->
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="p-5">
-              <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-              </div>
-              <form id="formPengguna" method="POST">
+            </table>
+                                      </div>
+                                  </div>
+</div>
+
+
+ <!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="modalFormPengguna" tabindex="-1" role="dialog" aria-labelledby="modalFormPengguna" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalFormPengguna">Pengguna</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+<form id="formPengguna">
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">      
             <div class="form-group">
@@ -158,45 +156,25 @@ if ( isset($_POST["regis"])) {
               <input type="text" class="form-control" id="kewarganegaraan" name="kewarganegaraan" required="required">
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="form-group">
-              <label>Password</label>
-              <input type="password" class="form-control" id="password" name="password" required="required">
-            </div>
-          </div>
    
           <div class="col-lg-12 col-md-12 col-sm-12 ">
-            <button type="submit" class="btn btn-primary btn-block" id="save" name="regis" onclick="tambahPengguna()">Simpan</button>
+            <button type="button" class="btn btn-primary" id="save" onclick="tambahPengguna()">Simpan</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
       </div>
       </div>
         </form>
-              <hr>
-              <div class="text-center">
-                <a class="small" href="login.php">Sudah memiliki akun? Login!</a>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-
   </div>
+</div>
 
- <!-- jQuery -->
- <script src="vendors/jquery/dist/jquery.min.js"></script>
-    <script src="style/js/jquery-confirm.js"></script>
-    <script src="style/js/jquery.validate.min.js"></script>
-    <script src="style/js/datatables.min.js"></script>
-    <!-- Custom Theme Scripts -->  
-   <!-- Bootstrap -->
-    <script src="vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="style/js/custom.min.js"></script>
-    <!-- <script src="../config/custom.js"></script> -->
-    <script src="style/js/sb-admin-2.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
-    <script>
-        $(".theSelect").select2();
-    </script>
-  </body>
-</html>
+
+
+
+
+
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<script src="../style/js/datatables.min.js"></script>
+<script src="aksi/dataPengguna/action.js"></script>
+
+
