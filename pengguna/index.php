@@ -128,6 +128,9 @@ header("location: ../index.php"); // Kita Redirect ke halaman index.php karena b
                                         case 'Berkas':
                                             include "view/FormBerkas.php";
                                             break;   
+                                        case 'Pengajuan-Surat':
+                                            include "view/FormPengajuanSurat.php";
+                                            break;   
                                     
                                     }
                                 }else{
