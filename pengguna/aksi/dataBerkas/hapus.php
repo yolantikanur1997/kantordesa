@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
     $row = mysqli_fetch_assoc($result);
 
-    $filePath = 'gambar/'.$row['nama_berkas'];
+    $filePath = '../../../admin/aksi/dataBerkas/gambar/'.$row['nama_berkas'];
 
     $stmt = $koneksi->prepare("DELETE FROM berkas WHERE id_berkas=?");
     $stmt->bind_param("i",$id_berkas);

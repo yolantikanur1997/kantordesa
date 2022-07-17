@@ -4,7 +4,7 @@
             <div class="col-sm-6">
            <h6 class="m-0 font-weight-bold text-primary">Data Jenis Surat</h6></div>
            <div class="col-sm-6 mr-auto" style="text-align: right;">
-           <a href="index.php?page=Jenis-Surat"><button class="btn btn-primary" title="Segarkan"><i class="fas fa-fw fa-retweet"></i></button></a>
+           <a href="dashboard.php?page=Jenis-Surat"><button class="btn btn-primary" title="Segarkan"><i class="fas fa-fw fa-retweet"></i></button></a>
 
            </div>
             </div>   

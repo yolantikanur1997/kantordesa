@@ -1,5 +1,6 @@
 var Isnew = true;
 relasiJenisSurat();
+relasiPengguna();
 lihat();
 
 var id_pengajuan_surat = null;
@@ -25,7 +26,27 @@ function relasiJenisSurat()
 
 
 }
+  function relasiPengguna()
+    {
+        $.ajax({
+            type : 'GET',
+            url : 'aksi/dataPengguna/lihat.php',
+            dataType : 'JSON',
+            success:function(data){
 
+                for(var i = 0; i< data.length; i++)
+                {
+                    $('#id_pengguna').append($("<option>" , {
+                        value: data[i].id_pengguna,
+                        text:[data[i].nik,data[i].nama],
+                    }));
+                }
+
+            }
+        });
+
+
+    }
 function tambahPengajuanSurat()
 {
     // alert("hi");
@@ -122,9 +143,9 @@ function lihat()
                         }
                     },
                     {"sTitle": "Nomor Surat","mData": "no_pengajuan_surat"},
+                    {"sTitle": "Pengguna","mData": "nama"},
                     {"sTitle": "Nama Surat","mData": "nama_surat"},
                     {"sTitle": "Tanggal Pengajuan","mData": "tanggal_pengajuan"},
-                    {"sTitle": "Tanggal Selesai","mData": "tanggal_selesai"},
                     {"sTitle": "Status","mData": "status"},
                     {
                         "sTitle":"Opsi",
@@ -164,8 +185,13 @@ function ambil(id)
             Isnew = false
             id_pengajuan_surat = data.id_pengajuan_surat
             $('#no_pengajuan_surat').val(data.no_pengajuan_surat);
+            $('#id_pengguna').val(data.id_pengguna).trigger('change');            
             $('#id_jenis_surat').val(data.id_jenis_surat).trigger('change');
+            $('#tanggal_pengajuan').val(data.tanggal_pengajuan);      
+            $('#tanggal_selesai').val(data.tanggal_selesai);      
             $('#keperluan').val(data.keperluan);      
+            $('#komentar').val(data.komentar);      
+            $('#status').val(data.status).trigger('change');        
         },
         error:function(xhr, status, error){
             alert(xhr.responseText);
@@ -192,6 +218,8 @@ function ambil(id)
             $('#keperluan2').html(data.keperluan);            
             $('#komentar2').html(data.komentar);            
             $('#status2').html(data.status);            
+            $('#nama2').html(data.nama);            
+            $('#nik').html(data.nik);            
             $('#modalPengajuanSurat').modal('show');
         },
         error:function(xhr, status, error){

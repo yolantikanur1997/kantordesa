@@ -4,7 +4,7 @@
             <div class="col-sm-6">
            <h6 class="m-0 font-weight-bold text-primary">Data Berkas</h6></div>
            <div class="col-sm-6 mr-auto" style="text-align: right;">
-           <a href="index.php?page=Berkas"><button class="btn btn-primary" title="Segarkan"><i class="fas fa-fw fa-retweet"></i></button></a>
+           <a href="dashboard.php?page=Berkas"><button class="btn btn-primary" title="Segarkan"><i class="fas fa-fw fa-retweet"></i></button></a>
 
            </div>
             </div>   
@@ -18,7 +18,7 @@
               <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="form-group">
                         <label>Pengguna</label>
-                        <select id="id_pengguna" name="jenis_berkas" class="theSelect form-control">
+                        <select id="id_pengguna" name="id_pengguna" class="theSelect form-control">
                           <option value="">Pilih Pengguna</option>
                         </select>
                       </div>

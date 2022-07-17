@@ -4,7 +4,7 @@
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-  $temp = "gambar/";
+  $temp = "../../../admin/aksi/dataBerkas/gambar/";
   if (!file_exists($temp))
     mkdir($temp);
 

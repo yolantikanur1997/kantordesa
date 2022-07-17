@@ -134,7 +134,7 @@
                             "mData": "nama_berkas",
                             "render": function(mData, type, row, meta){
                                 // return "<img src= \"/../fotosiswa" + mData + "\" height=\"50\"/>";
-                                return '<img  height="50" src="../pengguna/aksi/dataBerkas/gambar/' + mData + ' "/>';
+                                return '<img  height="50" src="../admin/aksi/dataBerkas/gambar/' + mData + ' "/>';
 
                             }
                         },

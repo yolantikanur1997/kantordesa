@@ -1,3 +1,9 @@
+<?php session_start();
+
+if(isset($_SESSION['nik'])){ // Jika tidak ada session username berarti dia belum login
+header("location: pengguna/index.php"); // Kita Redirect ke halaman index.php karena belum login
+}?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
